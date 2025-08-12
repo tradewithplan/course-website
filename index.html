@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade with Plan - Your Gateway to Professional Trading</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #a78bfa, #6b21a8); /* light purple to deep purple */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+        .cta-button:hover {
+            /* Custom styles */
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+        }
+        .cta-buy-button:hover, 
+        .cta-course-card:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #27272a;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+            background-color: #1a1a1a;
+        }
+        .tradingview-widget-container {
+            filter: grayscale(30%) contrast(110%);
+        }
+        
+        /* Purple scrollbar for all course content scroll containers */
+        .course-content-scroll::-webkit-scrollbar {
+          width: 8px;
+        }
+        .course-content-scroll::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .course-content-scroll::-webkit-scrollbar-thumb {
+          background-color: #8b5cf6; /* Purple */
+          border-radius: 10px;
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+
+        /* Firefox scrollbar styling */
+        .course-content-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: #7c3aed transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- App container -->
+    <div x-data="{ mobileMenuOpen: false }" class="min-h-screen">
+
+        <!-- Header / Navigation -->
+        <header class="sticky top-0 z-50 bg-black/50 backdrop-blur-lg border-b border-gray-800">
+            <nav class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <a href="#" class="flex items-center space-x-3">
+                        <span class="text-2xl font-bold" style="font-family: 'Montserrat', sans-serif;">
+                          <span class="text-white">Trade</span><span class="text-purple-600 gradient-text">with</span><span class="text-white">Plan</span>
+                        </span>
+                    </a>
+
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#features" class="text-gray-300 hover:text-purple-500 transition-colors">Features</a>
+                        <a href="#pricing" class="text-gray-300 hover:text-purple-500 transition-colors">Pricing</a>
+                        <a href="#testimonials" class="text-gray-300 hover:text-purple-500 transition-colors">Testimonials</a>
+                        <a href="login.html" class="text-gray-300 hover:text-purple-500 transition-colors">Login</a>
+                        <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">Get Started</a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false" class="md:hidden mt-4 space-y-4" x-transition>
+                    <a href="#features" class="block text-gray-300 hover:text-purple-500 transition-colors">Features</a>
+                    <a href="#pricing" class="block text-gray-300 hover:text-purple-500 transition-colors">Pricing</a>
+                    <a href="#testimonials" class="block text-gray-300 hover:text-purple-500 transition-colors">Testimonials</a>
+                    <a href="login.html" class="block text-gray-300 hover:text-purple-500 transition-colors">Login</a>
+                    <a href="#" class="block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-center">Get Started</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section class="container mx-auto px-6 py-24 md:py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+                    Trade with <span class="gradient-text">Precision</span>, Execute with <span class="gradient-text">Confidence</span>.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                    Unlock your trading potential with our state-of-the-art platform. Powerful charts, real-time data, and a community of traders at your fingertips.
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="#pricing" class="cta-button bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg text-lg">
+                        Explore Plans
+                    </a>
+                    <a href="#features" class="cta-button bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg text-lg">
+                        Learn More
+                    </a>
+                </div>
+            </section>
+
+            <!-- Interactive Chart Preview 
+            <section class="container mx-auto px-6 py-16">
+                 <div class="tradingview-widget-container rounded-xl overflow-hidden border-2 border-gray-800 shadow-2xl shadow-purple-900/20">
+                    <div id="tradingview_f4b5b"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                    new TradingView.widget(
+                    {
+                      "width": "100%",
+                      "height": 550,
+                      "symbol": "NASDAQ:AAPL",
+                      "interval": "D",
+                      "timezone": "Etc/UTC",
+                      "theme": "dark",
+                      "style": "1",
+                      "locale": "en",
+                      "toolbar_bg": "#f1f3f6",
+                      "enable_publishing": false,
+                      "withdateranges": true,
+                      "hide_side_toolbar": false,
+                      "allow_symbol_change": true,
+                      "container_id": "tradingview_f4b5b"
+                    }
+                    );
+                    </script>
+                </div>
+            </section> -->
+
+            <!-- Features Section -->
+            <section id="features" class="bg-black py-20">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Why Choose <span class="gradient-text">Trade with Plan</span>?</h2>
+                        <p class="text-gray-400 mt-2">Everything you need to analyze the market and trade effectively.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Feature 1 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <h3 class="text-2xl font-bold text-white mb-3">Advanced Charting</h3>
+                            <p class="text-gray-400">Utilize a full suite of drawing tools, technical indicators, and chart types. Highly customizable to fit your trading style.</p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <h3 class="text-2xl font-bold text-white mb-3">Real-Time Data</h3>
+                            <p class="text-gray-400">Get lightning-fast market data from global exchanges to make timely and informed decisions.</p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <h3 class="text-2xl font-bold text-white mb-3">Community & Insights</h3>
+                            <p class="text-gray-400">Connect with other traders, share analyses, and get inspipurple by community-driven trading ideas.</p>
+                        </div>
+                        <!-- Feature 4 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <h3 class="text-2xl font-bold text-white mb-3">Customizable Workspace</h3>
+                            <p class="text-gray-400">Tailor your trading environment. Arrange charts, news feeds, and tools exactly how you like them.</p>
+                        </div>
+                        <!-- Feature 5 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <h3 class="text-2xl font-bold text-white mb-3">Paper Trading</h3>
+                            <p class="text-gray-400">Practice your strategies risk-free with a simulated account before you invest real capital.</p>
+                        </div>
+                        <!-- Feature 6 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <h3 class="text-2xl font-bold text-white mb-3">24/7 Support</h3>
+                            <p class="text-gray-400">Our dedicated support team is always available to help you with any questions or issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="py-20">
+              <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                  <h2 class="text-3xl md:text-4xl font-bold text-white">
+                    Find the <span class="gradient-text">Perfect Plan</span>
+                  </h2>
+                  <p class="text-gray-400 mt-2">Start for less, then upgrade for more power.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row justify-center items-stretch gap-8">
+
+                  <!-- Plan 1: ICT “FOREVER MODEL” (Advanced) -->
+                  <div onclick="openModal('modal-basic')" class="feature-card flex flex-col w-full max-w-sm p-8 rounded-xl bg-gray-900 border-2 border-gray-700 cursor-pointer hover:scale-105 transition-transform cta-course-card">
+                    <h3 class="text-2xl font-bold text-white text-center">ICT “Forever Model”</h3>
+                    <p class="text-center text-gray-400 mt-2 mb-6">(Advanced)</p>
+                    <p class="text-center text-4xl font-extrabold text-white mb-6">
+                      $30<span class="text-lg font-medium text-gray-400">(&#x20B9;2,610)</span>
+                    </p>
+                    <ul class="space-y-4 text-gray-300 mb-8 flex-grow">
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Weekday Live Market Support</li>
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Lifetime Course Access</li>
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Personal Doubt Sessions</li>
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Free 1-Month Premium Signals (worth $30)</li>
+                    </ul>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition-colors cta-buy-button mt-auto">Choose Plan</button>
+                  </div>
+
+                  <!-- Plan 2: Advance (Most Popular) -->
+                  <div onclick="openModal('modal-advance')" class="feature-card flex flex-col w-full max-w-sm p-8 rounded-xl bg-gray-900 border-4 border-purple-500 shadow-lg relative cursor-pointer hover:scale-105 transition-transform cta-course-card">
+                    <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase z-10">Most Popular</span>
+                    <h3 class="text-2xl font-bold text-white text-center">Basic to Advanced</h3>
+                    <p class="text-center text-gray-400 mt-2 mb-6">(3 ICT Models Covered)</p>
+                    <p class="text-center text-4xl font-extrabold text-white mb-6">
+                      $80<span class="text-lg font-medium text-gray-400">(&#x20B9;6,999)</span>
+                    </p>
+                    <ul class="space-y-4 text-gray-300 mb-8 flex-grow">
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Weekday Live Market Support</li>
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Lifetime Course Access</li>
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Personal Doubt Sessions</li>
+                      <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Free 1-Month Premium Signals (worth $30)</li>
+                    </ul>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition-colors cta-buy-button mt-auto">Choose Plan</button>
+                  </div>
+
+                  <!-- Plan 3: 1-1 Personal Mentorship -->
+                  <div onclick="openModal('modal-pro')" class="feature-card flex flex-col w-full max-w-sm p-8 rounded-xl bg-gray-900 border-2 border-gray-700 cursor-pointer hover:scale-105 transition-transform cta-course-card">
+                    <h3 class="text-2xl font-bold text-white text-center">1-1 Personal Mentorship</h3>
+                    <p class="text-center text-gray-400 mt-2 mb-6">(Only <span class="font-bold">2 Slots</span> per month)</p>
+                    <p class="text-center text-4xl font-extrabold text-white mb-6">
+                      $288<span class="text-lg font-medium text-gray-400">(&#x20B9;24,999)</span>
+                    </p>
+                    <ul class="space-y-4 text-gray-300 mb-8 flex-grow">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Free 5k Funded Account</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Funded Account Passing Assistance</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>WhatsApp & Telegram Support</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Personal Doubt Clearing Sessions</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Free Premium Signal Group</li>
+                    </ul>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition-colors cta-buy-button mt-auto">Choose Plan</button>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Modals -->
+
+              <!-- Course 1: ICT “FOREVER MODEL” (Advanced) -->
+              <div id="modal-basic" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+                <div class="bg-gray-900 rounded-lg w-full max-w-md sm:max-w-lg lg:max-w-2xl relative max-h-[90vh] overflow-hidden
+                            p-8 sm:p-10 md:p-12"> <!-- increased padding -->
+                  <button onclick="closeModal('modal-basic')" class="absolute top-4 right-4 text-white text-3xl">&times;</button> <!-- bigger close button with margin -->
+                  <h2 class="text-2xl font-bold text-white mb-6 gradient-text">ICT “Forever Model” - Course Content</h2> <!-- more bottom margin -->
+                  
+                  <div class="course-content-scroll max-h-[70vh] overflow-y-auto pr-3 text-gray-300">
+                    <p class="mb-4">Topics covered:</p>
+                    <ol class="list-decimal list-inside space-y-2">
+                      <li>What is Liquidity BSL, SSL.</li>
+                      <li>What is FVG and How to Find the Right FVG.</li>
+                      <li>What is iFVG and What is different between FVG & iFVG.</li>
+                      <li>How to Find Trading BIAS.</li>
+                      <li>Three Time frame layer Analysis of Liquidity.</li>
+                      <li>Where and how to take entry using the PD Arrays (FVG, iFVG).</li>
+                      <li>Complete Setup will be Explained (TP, SL, BE, RR).</li>
+                      <li>Risk management, Psychology.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 2: BASIC TO ADVANCED (3 ICT MODELS COVERED) -->
+              <div id="modal-advance" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+                <div class="bg-gray-900 rounded-lg w-full max-w-md sm:max-w-lg lg:max-w-2xl relative max-h-[90vh] overflow-hidden
+                            p-8 sm:p-10 md:p-12">
+                  <button onclick="closeModal('modal-advance')" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+                  <h2 class="text-2xl font-bold text-white mb-6 gradient-text">Basic to Advanced - Course Content</h2>
+                  
+                  <div class="course-content-scroll max-h-[70vh] overflow-y-auto pr-3 text-gray-300">
+                    <p class="mb-6"><strong>We focus on three markets:</strong> Indian Market, Forex, Crypto</p>
+
+                    <p class="mb-4"><strong>(FVG x TBS Model)</strong></p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                      <li>Types of Trading</li>
+                      <li>Trend Analysis</li>
+                      <li>Option Buying vs Option Selling</li>
+                      <li>What is Candlesticks & Time Frame</li>
+                      <li>What is ICT PO3 (AMD)</li>
+                      <li>Explanation Difference Between FVG & iFVG</li>
+                      <li>How to Find Right FVG</li>
+                      <li>PD Array Explanation</li>
+                      <li>How Market Manipulates Retailers</li>
+                      <li>What is Liquidity</li>
+                      <li>What is Orderflow</li>
+                      <li>Explanation About BSL & SSL in ICT</li>
+                      <li>Usage of Breaker & MSS in ICT</li>
+                      <li>Entry Based on TBS & FVG</li>
+                      <li>Forex Introduction</li>
+                      <li>Importance of TBS & TWS</li>
+                      <li>Spread, Brokerage, Lots Explanation</li>
+                      <li>Types of Pairs with High Volume</li>
+                      <li>TP, SL Explanation</li>
+                      <li>(50 - 50) Strategy to Maximize Profits</li>
+                      <li>Crypto Introduction</li>
+                      <li>Crypto Scalping FVG & TBS Confirmation</li>
+                      <li>Lot Size Management</li>
+                      <li>Importance of Trading Psychology</li>
+                    </ol>
+
+                    <p class="mb-4"><strong>(A+ Setup)</strong></p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                      <li>Session Based Entry Setup</li>
+                      <li>Special Tool to Find the Sessions</li>
+                      <li>How to Find Sessions Liquidity Points</li>
+                      <li>How to Use FVG, iFVG for Entry</li>
+                      <li>How to Set TP, SL, Breakeven, Trailing SL for A+ Model</li>
+                    </ol>
+
+                    <p class="mb-4"><strong>(ICT Forever Model)</strong></p>
+                    <ol class="list-decimal list-inside space-y-2">
+                      <li>What is Liquidity BSL, SSL.</li>
+                      <li>What is FVG and How to Find the Right FVG.</li>
+                      <li>What is iFVG and What is Different Between FVG & iFVG.</li>
+                      <li>How to Find Trading BIAS.</li>
+                      <li>Three Time Frame Layer Analysis of Liquidity.</li>
+                      <li>Where and How to Take Entry Using the PD Arrays (FVG, iFVG).</li>
+                      <li>Complete Setup will be Explained (TP, SL, BE, RR).</li>
+                      <li>Risk Management, Psychology.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 3: Pro Plan -->
+              <div id="modal-pro" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+                <div class="bg-gray-900 rounded-lg w-full max-w-md sm:max-w-lg lg:max-w-2xl relative max-h-[90vh] overflow-hidden p-8 sm:p-10 md:p-12">
+                  <button onclick="closeModal('modal-pro')" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+                  <h2 class="text-2xl font-bold text-white mb-6 gradient-text">1-1 Personal Mentorship - Course Content</h2>
+                  
+                  <div class="course-content-scroll max-h-[70vh] overflow-y-auto pr-3 text-gray-300">
+                    <p class="mb-4"><strong>Key Metrics of 1-1</strong></p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                      <li>Personalized method to pass funded accounts.</li>
+                      <li>How to increase funding to max allocations.</li>
+                      <li>In and out about Prop firms.</li>
+                      <li>One month course duration.</li>
+                      <li>Weekly 3 sessions.</li>
+                      <li>All sessions will be in practical mode to understand clearly.</li>
+                    </ol>
+
+                    <p class="mb-4"><strong>We focus on three markets:</strong> Indian Market, Forex, Crypto</p>
+
+                    <p class="mb-4"><strong>(FVG x TBS Model)</strong></p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                      <li>Types of Trading</li>
+                      <li>Trend Analysis</li>
+                      <li>Option Buying vs Option Selling</li>
+                      <li>What is Candlesticks & Time Frame</li>
+                      <li>What is ICT PO3 (AMD)</li>
+                      <li>Explanation Difference Between FVG & iFVG</li>
+                      <li>How to Find Right FVG</li>
+                      <li>PD Array Explanation</li>
+                      <li>How Market Manipulates Retailers</li>
+                      <li>What is Liquidity</li>
+                      <li>What is Orderflow</li>
+                      <li>Explanation About BSL & SSL in ICT</li>
+                      <li>Usage of Breaker & MSS in ICT</li>
+                      <li>Entry Based on TBS & FVG</li>
+                      <li>Forex Introduction</li>
+                      <li>Importance of TBS & TWS</li>
+                      <li>Spread, Brokerage, Lots Explanation</li>
+                      <li>Types of Pairs with High Volume</li>
+                      <li>TP, SL Explanation</li>
+                      <li>(50 - 50) Strategy to Maximize Profits</li>
+                      <li>Crypto Introduction</li>
+                      <li>Crypto Scalping FVG & TBS Confirmation</li>
+                      <li>Lot Size Management</li>
+                      <li>Importance of Trading Psychology</li>
+                    </ol>
+
+                    <p class="mb-4"><strong>(A+ Setup)</strong></p>
+                    <ol class="list-decimal list-inside space-y-2 mb-6">
+                      <li>Session Based Entry Setup</li>
+                      <li>Special Tool to Find the Sessions</li>
+                      <li>How to Find Sessions Liquidity Points</li>
+                      <li>How to Use FVG, iFVG for Entry</li>
+                      <li>How to Set TP, SL, Breakeven, Trailing SL for A+ Model</li>
+                    </ol>
+
+                    <p class="mb-4"><strong>(ICT Forever Model)</strong></p>
+                    <ol class="list-decimal list-inside space-y-2">
+                      <li>What is Liquidity BSL, SSL.</li>
+                      <li>What is FVG and How to Find the Right FVG.</li>
+                      <li>What is iFVG and What is Different Between FVG & iFVG.</li>
+                      <li>How to Find Trading BIAS.</li>
+                      <li>Three Time Frame Layer Analysis of Liquidity.</li>
+                      <li>Where and How to Take Entry Using the PD Arrays (FVG, iFVG).</li>
+                      <li>Complete Setup will be Explained (TP, SL, BE, RR).</li>
+                      <li>Risk Management, Psychology.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <script>
+            function openModal(id) {
+              document.getElementById(id).classList.remove('hidden');
+              document.getElementById(id).classList.add('flex');
+            }
+            function closeModal(id) {
+              document.getElementById(id).classList.add('hidden');
+              document.getElementById(id).classList.remove('flex');
+            }
+            </script>
+            
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="bg-black py-20">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Trusted by <span class="gradient-text">Traders Worldwide</span></h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Testimonial 1 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <p class="text-gray-300 mb-6">"The charting tools are phenomenal. I can perform my technical analysis faster and more accurately than ever before. A game-changer for my strategy."</p>
+                            <div class="flex items-center">
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Naveen K.</p>
+                                    <p class="text-sm text-gray-500">Day Trader</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <p class="text-gray-300 mb-6">"I love the clean interface and the dark mode is easy on the eyes during long trading sessions. The platform is incpurpleibly fast and reliable."</p>
+                             <div class="flex items-center">
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Priya S.</p>
+                                    <p class="text-sm text-gray-500">Swing Trader</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="feature-card p-8 rounded-lg bg-gray-900">
+                            <p class="text-gray-300 mb-6">"As a beginner, the paper trading feature was invaluable. It gave me the confidence to start trading with real money. Highly recommended!"</p>
+                             <div class="flex items-center">
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Amit R.</p>
+                                    <p class="text-sm text-gray-500">New Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Us Section -->
+            <section id="contact" class="py-20">
+              <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Contact Us</h2>
+                <p class="text-lg text-gray-400 mb-8">
+                  Feel free to drop your message here.
+                </p>
+
+                <form id="contact-form" class="space-y-4 max-w-3xl mx-auto"
+                  action="https://formsubmit.co/alwysbhpy@gmail.com"
+                  method="POST">
+
+                  <!-- FormSubmit settings -->
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="hidden" name="_next" value="">
+
+                  <div id="form-feedback" class="h-6 text-sm"></div>
+
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <input type="text" id="name" name="Name" placeholder="Name" required
+                      class="form-input w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-white">
+                    <input type="tel" id="phone" name="Phone" placeholder="Phone Number" required
+                      pattern="[0-9]{10,15}"
+                      title="Please enter a valid phone number"
+                      class="form-input w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-white">
+                  </div>
+
+                  <div>
+                      <input type="email" id="email" name="E-mail" placeholder="Email" required
+                      class="form-input w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-white">  
+                  </div>
+
+                  <textarea id="message" name="Message" rows="5" placeholder="Message" required
+                    class="form-input w-full p-3 rounded-lg bg-gray-900 border border-gray-700 text-white"></textarea>
+
+                  <button type="submit"
+                    class="bg-purple-600 hover:bg-purple-700 font-semibold px-8 py-3 rounded-full text-white">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </section>
+
+            <script>
+              const form = document.getElementById('contact-form');
+              const feedback = document.getElementById('form-feedback');
+
+              form.addEventListener('submit', function (e) {
+                e.preventDefault(); // stop default submission for feedback handling
+                feedback.style.color = '#a78bfa';
+                feedback.textContent = 'Sending...';
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                  method: 'POST',
+                  body: formData,
+                  headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                  if (response.ok) {
+                    feedback.style.color = '#22c55e';
+                    feedback.textContent = '✅ Thank you! Your message has been sent.';
+                    form.reset();
+                  } else {
+                    feedback.style.color = '#ef4444';
+                    feedback.textContent = '❌ Something went wrong. Please try again.';
+                  }
+                })
+                .catch(() => {
+                  feedback.style.color = '#ef4444';
+                  feedback.textContent = '❌ Network error. Please try again.';
+                });
+              });
+            </script>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-black border-t border-gray-800">
+            <div class="container mx-auto px-6 py-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-center md:text-left mb-4 md:mb-0">
+                        <p class="text-gray-400">&copy; 2025 Trade with Plan. All Rights Reserved.</p>
+                        <p class="text-sm text-gray-500">Built for traders, by traders.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-2 sm:space-y-0 items-center text-sm">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors sm:border-r sm:border-gray-700 sm:pr-6">
+                            Privacy Policy
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors sm:border-r sm:border-gray-700 sm:pr-6">
+                            Terms of Service
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
